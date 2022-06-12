@@ -30,7 +30,16 @@ const Navbar = () => {
     //아래 input에서 받은 이벤트를 가지고
     if(event.key === "Enter"){
       //만약 이벤트에서 받은 키가 enter라면
-      console.log("Enter입니덩", event.key)
+      // console.log("Enter입니덩", event.key)
+      //js는 value로 받아오지만, 리액트는 event에 값이 들어있다
+      let keyword = event.target.value
+      //이 밸류 안에 원하는 값이 들어잇다.
+
+      navigate(`/?q=${keyword}`);
+      // 입력한 검색어를 읽어와서 url 바꿔주기 네비게이트 사용
+      //?q=검색어 쿼리 값을 찾아야 하는디
+      //키워드를 통해서 url을 바꿔줌
+
     }
   }
   return (
