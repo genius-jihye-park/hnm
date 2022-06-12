@@ -13,7 +13,7 @@ const ProductAll = () => {
     //만약 아무것도 입력되지 않으면 빈 string 넣음
     //q라고 시작되는 곳의 아이템을 가져다가 서치쿼리에 넣어줌
     console.log("query값은?", searchQuery);
-    let url = `http://localhost:3004/products?q=${searchQuery}`;
+    let url = `https://my-json-server.typicode.com/genius-jihye-park/hnm/products?q=${searchQuery}`;
     //url입력시 `` 사용
     // 초기에는 전체 상품이 보여야 하기 때문에 전체상품 페이지 나타냄
     let response = await fetch(url);

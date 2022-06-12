@@ -7,7 +7,7 @@ const ProductDetail = () => {
   const[product, setProduct] = useState(null)
   //api데이터를 state에 담기
   const getProductDetail = async () => {
-    let url = `http://localhost:3004/products/${id}`; //url입력시``사용
+    let url = `https://my-json-server.typicode.com/genius-jihye-park/hnm/products/${id}`; //url입력시``사용
     let response = await fetch(url);
     let data = await response.json(); //응답에서 json을 뽑아와 주세요
     console.log(data);
