@@ -20,11 +20,13 @@ const ProductAll = () => {
   }, []);
   return (
     <div>
-      <Container>
+      <Container> 
+        {/* //부트스트랩에서 컨테이너의 역할은 아이템이 가운데로 모이게 해줌 */}
         <Row>
           {productList.map((menu) => (
-            <Col lg={3}>
-              <ProductCard item={menu}/>
+            <Col lg={3}> 
+            {/* //한개 아이템의 사이즈를 정하는 것; 한줄에는 12가 들어간다 즉, 4개 */}
+              <ProductCard item={menu} />
             </Col>
           ))}
         </Row>

@@ -3,6 +3,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faSearch, faBagShopping } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const menuList = [
@@ -15,18 +16,40 @@ const Navbar = () => {
     "Sale",
     "지속가능성",
   ];
+  const navigate = useNavigate()
+  const goToLogin=() => {
+    navigate('/login');
+  }
+  const goToFavorite=() => {
+    navigate('/favorite');
+  }
+  const goToShoppingbag=() => {
+    navigate('/shoppingbag');
+  };
+  const search = (event) => {
+    //아래 input에서 받은 이벤트를 가지고
+    if(event.key === "Enter"){
+      //만약 이벤트에서 받은 키가 enter라면
+      console.log("Enter입니덩", event.key)
+    }
+  }
   return (
     <div>
       <div>
-        <div class="login-button">
+        <div class="buttons login-button" onClick={goToLogin}>
           <FontAwesomeIcon icon={faUser} />
-          <div class="button-name">로그인</div>
-          <FontAwesomeIcon icon={faHeart} />
-          <div class="button-name">즐겨찾기</div>
-          <FontAwesomeIcon icon={faBagShopping} />
-          <div class="button-name">쇼핑백</div>
+          <div class="buttons button-name">로그인</div>
         </div>
+        <div class="buttons favorite-button" onClick={goToFavorite}>
+          <FontAwesomeIcon icon={faHeart} />
+          <div class="buttons button-name">즐겨찾기</div>
+        </div>
+        <div class="buttons shoppingbag-button" onClick={goToShoppingbag}>
+          <FontAwesomeIcon icon={faBagShopping} />
+          <div class="buttons button-name">쇼핑백</div>
+        </div> 
       </div>
+
       <div className="nav-section">
         <img
           width={100}
@@ -45,7 +68,9 @@ const Navbar = () => {
         </ul>
         <div className="search-area">
           <FontAwesomeIcon icon={faSearch} />
-          <input type="text" placeholder="제품 검색" />
+          <input type="text" placeholder="제품 검색" onKeyPress={(event) =>search(event)}/>
+          {/* onKeyPress가 이벤트를 받아서 엔터가 쳐질 때만 동작하도록 함 */}
+          {/* 모든 이벤트 리스너는 이벤트를 매개 변수로 넘겨준다 */}
         </div>
       </div>
       <div className="free-delivery">회원은 3만원 이상 구매 시 무료 배송</div>

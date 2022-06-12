@@ -1,33 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState, useEffect } from "react";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route } from "react-router-dom";
 import ProductAll from "./page/ProductAll";
 import Login from "./page/Login";
+import Favorite from "./page/Favorite";
+import Shoppingbag from "./page/Shoppingbag";
 import ProductDetail from "./page/ProductDetail";
 import Navbar from "./component/Navbar";
+import PrivateRoute from "./routes/PrivateRoute";
 
 
-//1. 전체상품페이지, 로그인, 상품상세페이지
-//1-1. 네비게이션 바 
-//2. 전체상품에는 전체상품
-//3. 로그인누르면 로그인 페이지
-//4. 상품디테일을 눌렀으나, 로그인이 안되있을경우 로그인 페이지가 나온다
-//5. 로그아웃버튼을 클릭하면 로그아웃
-//5. 로그아웃이 되면 상품 디테일 페이지를 볼 수 없다. 다시 로그인 페이지 보인다
-//6 로그인을하면 로그아웃이 보이고 로그아웃을 하면 로그인이 보인다
-//7. 상품을 검색할 수 있다.
 function App() {
+  const [authentication, setauthentication] = useState(false); //true면 로그인이 됌 -> 로그인시 바꿔줘야함 Login.js
+  useEffect(() => {
+    console.log("바뀌는중", authentication);
+  }, [authentication]); //authentication이 바뀔 때마다 콘솔 찍힘
   return (
-  <div>
-    <Navbar/>
-    <Routes>
-      <Route path='/' element={<ProductAll/>}/> //기본페이지
-      <Route path='/login' element={<Login/>}/> //로그인페이지
-      <Route path='/product/:id' element={<ProductDetail/>}/> //프로덕트의 아이디값만 가져와서 특정 제품만 들고옴
-    </Routes>
+    <div>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<ProductAll />} /> //기본페이지
+        <Route
+          path="/login"
+          element={<Login setauthentication={setauthentication} />}
+        />{" "}
+        //로그인페이지로 props해서 setauthentication을 보내버림 , 함수도 props할
+        수 있다.
+        <Route path="/shoppingbag" element={<Shoppingbag />} /> //장바구니페이지
+        <Route path="/favorite" element={<Favorite />} /> //즐겨찾기페이지
+        <Route
+          path="/product/:id"
+          element={<PrivateRoute authentication={authentication} />}
+        />{" "}
+        //로그인이 된 사용자만 상세페이지 보여줌
+      </Routes>
     </div>
-  )
+  );
 }
 
 export default App;

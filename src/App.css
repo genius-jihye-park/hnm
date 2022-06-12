@@ -1,7 +1,18 @@
-.login-button{
+img {
+    border: 0;
+    max-width: 100%;
+}
+.product-img{
+    aspect-ratio: auto 768 / 1152;
+    cursor: pointer;
+    max-width: 100%;
+    position: relative;
+}
+.buttons{
     display: flex;
     justify-content: flex-end;
     margin: 20px;
+    cursor: pointer;
 }
 .button-name{
     margin: 0px 10px;
@@ -24,6 +35,7 @@
 }
 
 .search-area input{ 
+    justify-content: right;
     border: 0px solid #000000;
     border-bottom-width: 1px;
     background-color: transparent;
