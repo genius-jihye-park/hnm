@@ -17,7 +17,7 @@ import Navbar from "./component/Navbar";
 //6 로그인을하면 로그아웃이 보이고 로그아웃을 하면 로그인이 보인다
 //7. 상품을 검색할 수 있다.
 function App() {
-  return 
+  return (
   <div>
     <Navbar/>
     <Routes>
@@ -26,6 +26,7 @@ function App() {
       <Route path='/product/:id' element={<ProductDetail/>}/> //프로덕트의 아이디값만 가져와서 특정 제품만 들고옴
     </Routes>
     </div>
+  )
 }
 
 export default App;
