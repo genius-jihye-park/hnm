@@ -39,6 +39,7 @@ const Navbar = () => {
       // 입력한 검색어를 읽어와서 url 바꿔주기 네비게이트 사용
       //?q=검색어 쿼리 값을 찾아야 하는디
       //키워드를 통해서 url을 바꿔줌
+      //쿼리 값으로 받아온 검색어는 productAll에서 필터링 
 
     }
   }
@@ -63,6 +64,7 @@ const Navbar = () => {
         <img
           width={100}
           src="https://3dwarehouse.sketchup.com/warehouse/v1.0/publiccontent/c0a6a57f-e8a6-4c3d-a874-b9be0a1ecba9"
+          
         />
       </div>
       <div className="menu-area">
